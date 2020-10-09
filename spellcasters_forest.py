@@ -1258,7 +1258,7 @@ while True:
     # print("   ")
     # print(iconFrameIter//20)
 
-    tempName="./test/1.png"
+    tempName="./temp/1.png"
     iconImg.save(tempName)
     tempImg=pygame.image.load(tempName).convert()
     display.blit(pygame.transform.scale(tempImg,(79,96)),(0,0))
