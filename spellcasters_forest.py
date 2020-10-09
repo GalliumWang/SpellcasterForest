@@ -1,5 +1,7 @@
 #!/usr/bin/python3.4
 # 导入基本库
+#version 1.02
+
 import pygame, sys, random, time, os, math
 from datetime import datetime
 import data.entities as e
@@ -335,18 +337,30 @@ for spell in spell_dat:
         pass
 
 
+# level_messages = {
+#     1 : ['Use WASD to move.','Click the on or near the dummy and drag diagonally down and to the left to cast Wind Slash.'],
+#     2 : ['Using spells takes mana. Collect blue orbs to get more.'],
+#     3 : ['Some real enemies are here now.'],
+#     4 : ['!Meteor Crash','There\'s more!'],
+#     5 : ['The sorceress Scarlet wants to fight!'],
+#     6 : ['!Fire Blast','Buuuuurrrrrn...'],
+#     7 : ['Beware of the Maws.'],
+#     8 : ['!Protection','Now you have a non-offensive spell!'],
+#     9 : ['The Great Sorcerer, Jamician, wants to fight!']
+#     }
+# #关卡说明
+
 level_messages = {
-    1 : ['Use WASD to move.','Click the on or near the dummy and drag diagonally down and to the left to cast Wind Slash.'],
-    2 : ['Using spells takes mana. Collect blue orbs to get more.'],
-    3 : ['Some real enemies are here now.'],
-    4 : ['!Meteor Crash','There\'s more!'],
-    5 : ['The sorceress Scarlet wants to fight!'],
-    6 : ['!Fire Blast','Buuuuurrrrrn...'],
-    7 : ['Beware of the Maws.'],
-    8 : ['!Protection','Now you have a non-offensive spell!'],
-    9 : ['The Great Sorcerer, Jamician, wants to fight!']
+    1 : ['Use WASD to move.'],
+    2 : ['level 2.'],
+    3 : ['level 3.'],
+    4 : ['level 4.'],
+    5 : ['level 5.'],
+    6 : ['level 6.'],
+    7 : ['level 7.'],
+    8 : ['level 8.'],
+    9 : ['level 9.']
     }
-            #关卡说明
 
 
 
@@ -949,7 +963,7 @@ while True:
     r_list = []
     n = 0
     for text_obj in damage_text:
-        print(text_obj[2]+'text')
+        #print(text_obj[2]+'text')
         alpha = 255-int(text_obj[3]/60*255)
         text.show_text(text_obj[2],text_obj[0]-int(get_text_width(text_obj[2],1)/2)-scroll[0]+1,text_obj[1]-scroll[1]-int(text_obj[3]/4),1,9999,font_gold,display,alpha=alpha)
         text.show_text(text_obj[2],text_obj[0]-int(get_text_width(text_obj[2],1)/2)-scroll[0],text_obj[1]-scroll[1]-1-int(text_obj[3]/4),1,9999,font_white,display,alpha=alpha)
