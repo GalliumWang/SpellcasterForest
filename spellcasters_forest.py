@@ -1,6 +1,7 @@
 #!/usr/bin/python3.4
 # 导入基本库
 #version 1.03
+
 from PIL import Image
 import pygame, sys, random, time, os, math
 from datetime import datetime
@@ -15,7 +16,7 @@ from pygame.locals import *
 iconImg = Image.open("data/gifs/icon.gif")
 iconFrameNum=iconImg.n_frames*20
 iconFrameIter=0
-print("total: "+str(iconFrameNum))
+#("total: "+str(iconFrameNum))
 
 
 #预处理
