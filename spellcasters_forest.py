@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 # 导入基本库
-#version 1.02
-
+#version 1.03
+from PIL import Image
 import pygame, sys, random, time, os, math
 from datetime import datetime
 import data.entities as e
@@ -9,6 +9,14 @@ import data.text as text
 # Setup pygame/window ---------------------------------------- #
 mainClock = pygame.time.Clock()
 from pygame.locals import *
+
+
+#TODO:Add DIY icon
+iconImg = Image.open("data/gifs/icon.gif")
+iconFrameNum=iconImg.n_frames*20
+iconFrameIter=0
+print("total: "+str(iconFrameNum))
+
 
 #预处理
 pygame.mixer.pre_init(44100, -16, 2, 512)
@@ -461,14 +469,9 @@ last_frame = None
 # pygame.mixer.music.set_volume(0.2)
 # pygame.mixer.music.play(-1)
 #循环前开启音乐
-#TODO:播放音乐
 
 
 while True:
-
-    # if(current_level==2):
-    #     player.entity_data['health']=-1 #TODO:TO be removed
-
 
 
     # Mouse -------------------------------------------------- #
@@ -811,7 +814,7 @@ while True:
                     if spell[2] == 'Protection':
                         if entity.type == 'player':
                             if entity.entity_data['health'] <= 0:
-                                if entity.entity_data['hurt_timer'] > 13:       #TODO：如果hurt值过低，可能于施法前已经死亡？
+                                if entity.entity_data['hurt_timer'] > 13:
                                     entity.entity_data['health'] = 1        #在保护咒术中，可使玩家角色免于死亡
                     dmg = None
                     if spell[2] == 'Wind Slash':
@@ -1248,6 +1251,22 @@ while True:
             if event.button == 1:
                 clicking = False
 
+    #TODO:add icon
+    iconImg.seek(iconFrameIter//20)
+
+    # print(iconFrameIter)
+    # print("   ")
+    # print(iconFrameIter//20)
+
+    tempName="./test/1.png"
+    iconImg.save(tempName)
+    tempImg=pygame.image.load(tempName).convert()
+    display.blit(pygame.transform.scale(tempImg,(79,96)),(0,0))
+
+    if(iconFrameIter<iconFrameNum-1):
+        iconFrameIter+=1
+    else:
+        iconFrameIter=0
 
     # 更新画面
     screen.blit(pygame.transform.scale(display,(WINDOWWIDTH,WINDOWHEIGHT)),(0,0))   #将最终画面缩放到适应设定分辨率的比例
